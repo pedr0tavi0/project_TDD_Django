@@ -315,7 +315,7 @@ class LivroFormTest(TestCase):
         dados = dict(titulo='123', editora='Editora Brasil')
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['titulo', 'Titulo deve ter pelo menos 3 caracteres']
+        errors_list = errors.get('titulo', 'Deve ter pelo menos três caracteres')
         msg = 'Deve ter pelo menos tres caracteres'
         self.assertEqual([msg], errors_list)
     
@@ -323,23 +323,23 @@ class LivroFormTest(TestCase):
         dados = dict(titulo='Contos do Machado de Assis', editora='xy')
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['editora', 'Editora deve ter pelo menos 3 caracteres']
+        errors_list = errors.get('autor', 'Deve ter pelo menos dez caracteres')
         msg = 'Deve ter pelo menos tres caracteres'
         self.assertEqual([msg], errors_list)
 
-    def test_form_less_than_13_character_(self):
-        dados ={"titulo": "Contos do Machado de Assis",'isbn': "8963"}
+    def test_form_less_than_13_character(self):
+        dados = {"titulo": "Contos do Machado de Assis", 'isbn': "8963321123456"}
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['isbn', 'ISBN deve conter exatos 13 caracteres sendo todos numeros']
-        msg = 'ISBN deve conter exatos 13 caracteres'
+        errors_list = errors.get('isbn', 'O campo de ISBN deve ter exatos treze caracteres e todos números')
+        msg = 'O campo de ISBN deve ter exatos treze caracteres e todos números'
         self.assertEqual([msg], errors_list)
 
     def test_form_less_than_10_character_1(self):
         dados = {'editora': 'Editora Brasil', 'autor':'ze'}
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['autor', 'Autor deve ter pelo menos 10 caracteres']
+        errors_list = errors.get('autor', 'Deve ter pelo menos dez caracteres')
         msg = 'Deve ter pelo menos dez caracteres'
         self.assertEqual([msg], errors_list)
 
@@ -347,15 +347,15 @@ class LivroFormTest(TestCase):
         dados = {'isbn': '9876543211234', 'numero_paginas': '1577'}
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['numero_paginas', 'Numero de paginas deve ser maior que zero']
-        msg = 'Numero de paginas deve ser maior que zero'
+        errors_list = errors.get('numero_paginas', 'O campo de número de páginas deve estar entre 1 e 999')
+        msg = 'O campo de número de páginas deve estar entre 1 e 999'
         self.assertEqual([msg], errors_list)
 
     def test_form_less_than_4_character_1(self):
         dados = {'numero_paginas': '157', 'ano_publicacao': '18'}
         form = LivroForm(dados)
         errors = form.errors
-        errors_list = errors.get['ano_publicacao', 'Ano de publicacao deve ter pelo menos 4 caracteres e todos serem numeros']
-        msg = 'Ano de publicacao deve ter exatos quatro caracteres'
+        errors_list = errors.get('ano_publicacao', 'O campo de ano de publicacao deve ter exatos quatro caracteres e todos números')
+        msg = 'O campo de ano de publicacao deve ter exatos quatro caracteres e todos números'
         self.assertEqual([msg], errors_list)
 
