@@ -299,7 +299,7 @@ class LivroFormTest(TestCase):
         form = LivroForm(dados)
         errors = form.errors
         errors_list = errors['isbn'] 
-        msg = 'Informe o isbn do livro.'
+        msg = 'Informe o ISBN do livro.'
         self.assertEqual([msg], errors_list)
 
     def test_form_without_data_6(self):
