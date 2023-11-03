@@ -71,12 +71,12 @@ class LivroForm(forms.ModelForm):
             return isbn
             
         def clean_numero_paginas(self):
-            numero_paginas = self.cleaned_data['Numero de paginas']
+            numero_paginas = self.cleaned_data['numero_paginas']
             validate_numero_paginas(numero_paginas)
             return numero_paginas
 
         def clean_ano_publicacao(self):
-            ano_publicacao = self.cleaned_data['Ano que a obra foi escrita']
+            ano_publicacao = self.cleaned_data['ano_publicacao']
             validate_ano_publicacao(ano_publicacao)
             return ano_publicacao
 

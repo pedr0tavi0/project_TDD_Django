@@ -6,7 +6,7 @@ class LivroModel(models.Model):
     autor = models.CharField('autor',null=True, max_length=200)
     isbn = models.CharField('isbn',null=True,  max_length=200)
     numero_paginas = models.IntegerField('numero_paginas', null=True)
-  #  ano_publicacao = models.IntegerField('ano_publicacao',null=True)
+    ano_publicacao = models.IntegerField('ano_publicacao',null=True)
 
     def __str__(self):
         return self.titulo
